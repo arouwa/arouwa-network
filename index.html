@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arouwa Network</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Varsayılan Tema (Açık Tema) */
+        :root {
+            --bg-color: #fff;
+            --text-color: #000;
+            --nav-bg-color-light: #e3f2fd; /* Açık mavi */
+            --nav-bg-color-dark: #003366;  /* Koyu mavi */
+        }
+
+        /* Koyu Tema */
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #f5f5f5;
+            --nav-bg-color-light: #004b6d; /* Koyu mavi */
+            --nav-bg-color-dark: #003366;  /* Daha koyu mavi */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: var(--nav-bg-color-light);
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: var(--text-color);
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #000;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #ddd;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .command-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .command-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .supporters-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .supporter-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Arouwa Network</a>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#anaekran" onclick="navigate('anaekran')">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#added" onclick="navigate('added')">Teşekkürler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#commands" onclick="navigate('commands')">Komutlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#settings" onclick="navigate('settings')">Ayarlar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#supporters" onclick="navigate('supporters')">Destekçiler</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <!-- Ana Sayfa Bölümü -->
+        <div id="anaekran" class="section active">
+            <h1>Arouwa Network'e Hoş Geldiniz!</h1>
+            <p>Botumuz hakkında bilgi almak için buradasınız. Hadi başlayalım!</p>
+            <button class="btn btn-primary" onclick="addBot()">Botu Ekle</button>
+        </div>
+
+        <!-- Teşekkürler Bölümü -->
+        <div id="added" class="section">
+            <h1>Teşekkürler!</h1>
+            <p>Botumuzu eklediğiniz için teşekkür ederiz. Harika zamanlar dileriz!</p>
+            <a href="#anaekran" class="btn btn-secondary" onclick="navigate('anaekran')">Ana Sayfa</a>
+        </div>
+
+        <!-- Komutlar Bölümü -->
+        <div id="commands" class="section">
+            <h1>Komutlar</h1>
+            <ul class="command-list">
+                <li class="command-item">
+                    <h4>!yasakla [Kullanıcı]</h4>
+                    <p>Kullanıcıyı sunucudan yasaklar.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!at [Kullanıcı]</h4>
+                    <p>Kullanıcıyı sunucudan atar.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!sustur [Kullanıcı]</h4>
+                    <p>Kullanıcıyı susturur.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!sessustur [Kullanıcı]</h4>
+                    <p>Kullanıcıyı ses kanalında susturur.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!sessağırlaştır [Kullanıcı]</h4>
+                    <p>Kullanıcıyı ses kanalında sağırlaştırır.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!sil [Sayı]</h4>
+                    <p>Belirtilen sayıda mesajı siler.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!auto_role [Rol İsmi]</h4>
+                    <p>Yeni gelen üyelere otomatik rol ekler.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!şaka</h4>
+                    <p>Rastgele bir şaka gönderir.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!konuştur [Kullanıcı] [Mesaj]</h4>
+                    <p>Kullanıcıyı konuşturur.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!ping</h4>
+                    <p>Botun ping'ini ms cinsinden görüntüleyin.</p>
+                </li>
+                <li class="command-item">
+                    <h4>!sohbet</h4>
+                    <p>Yakında Gelecektir, Sağlıcakla Kalın!</p>
+                </li>
+                <li class="command-item">
+                    <h4>!zar</h4>
+                    <p>Rastgele bir zar atar!</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Ayarlar Bölümü -->
+        <div id="settings" class="section">
+            <h1>Ayarlar</h1>
+            <button class="btn btn-light" onclick="setLightMode()">Açık Tema</button>
+            <button class="btn btn-dark" onclick="setDarkMode()">Koyu Tema</button>
+        </div>
+
+        <!-- Destekçiler Bölümü -->
+        <div id="supporters" class="section">
+            <h1>Destekçiler</h1>
+            <ul class="supporters-list">
+                <li class="supporter-item">arouwa_</li>
+                <li class="supporter-item">rel deja seduaso</li>
+                <li class="supporter-item">sxdu.dev</li>
+            </ul>
+            <a href="#anaekran" class="btn btn-secondary" onclick="navigate('anaekran')">Ana Sayfa</a>
+        </div>
+    </div>
+
+    <script>
+        // Bölümler arasında geçiş
+        function navigate(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            window.history.pushState({}, '', `#${sectionId}`);
+        }
+
+        // Botu ekle fonksiyonu
+        function addBot() {
+            const botAddURL = 'https://discord.com/oauth2/authorize?client_id=1310269894612357120&scope=bot&permissions=1099511627775';
+            window.open(botAddURL, '_blank');
+            navigate('added');
+        }
+
+        // Açık Tema
+        function setLightMode() {
+            document.body.classList.remove('dark-mode');
+        }
+
+        // Koyu Tema
+        function setDarkMode() {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Sayfa yüklendiğinde doğru bölümü göster
+        window.onload = function() {
+            const section = window.location.hash.substring(1);
+            if (section) {
+                navigate(section);
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
